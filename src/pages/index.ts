@@ -1,0 +1,5 @@
+export { AuthorizationPage } from './Authorization/AuthorizationPage'
+export { FavouritesPage } from './Favourites/FavouritesPage';
+export { FilmListPage } from './FilmList/FilmListPage'
+export {LoginPage} from './Login/LoginPage'
+

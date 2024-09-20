@@ -2,11 +2,12 @@ import { Link } from "react-router-dom";
 import style from "./Navbar.module.scss";
 import { Img } from "react-image";
 import KBIcon from "../../assets/icons/kb.svg";
-export default function Navbar() {
+
+export const Navbar = () => {
   return (
     <div className={style.header}>
       <nav className={style.navbar}>
-        <Img src={KBIcon} width={100}/>
+        <Img src={KBIcon} width={100} />
         <ul className={style.navbar__inner}>
           <li>
             <Link className={style.navbar__inner_el} to={"/"}>
@@ -23,4 +24,4 @@ export default function Navbar() {
       <div className={style.user}>Пользователь</div>
     </div>
   );
-}
+};

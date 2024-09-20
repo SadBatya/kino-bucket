@@ -1,10 +1,13 @@
-
-import './App.css';
-
+import './styles/App.scss';
+import { Navbar } from './components';
+import { Outlet } from 'react-router-dom';
 function App() {
   return (
     <div className="App">
-      Kino-Bucket
+      <Navbar />
+      <div className='container'>
+        <Outlet />
+      </div>
     </div>
   );
 }

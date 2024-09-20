@@ -1,0 +1,55 @@
+@import "../../styles/variables.scss";
+
+.card {
+  flex: 1;
+  text-align: center;
+  cursor: pointer;
+  padding: 0.8rem;
+  transition: $transition-all;
+  &:hover{
+    background-color: $card-hover;
+  }
+
+
+
+  .card__img {
+    img {
+      max-width: 200px;
+    }
+  }
+  font-size: $font-size-card;
+  .card__film_inner {
+    display: flex;
+    flex-direction: column;
+    max-width: 200px;
+    margin: 0 auto;
+    gap: 0.5rem;
+    padding: 0.5rem 0.2rem;
+
+    .card__name {
+      color: white;
+    }
+    .card__film_info {
+      display: flex;
+      justify-content: space-between;
+      .card__year {
+        color: white;
+      }
+
+      .card__rating {
+        color: $card-rating;
+        display: flex;
+        align-items: center;
+        gap: 0.2rem;
+        justify-content: end;
+        &:before {
+          content: "";
+          display: block;
+          width: 1.2rem;
+          height: 1.3rem;
+          background: url("../../assets/icons/star.svg") no-repeat;
+        }
+      }
+    }
+  }
+}

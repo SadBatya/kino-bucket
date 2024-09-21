@@ -35,7 +35,7 @@
         transition: $transition-all;
         text-transform: uppercase;
         &:hover {
-          background-color: rgba(80, 84, 92, 0.691);
+          background-color: $btn-bg-hover;
         }
       }
     }
@@ -61,5 +61,20 @@
       border: none;
     }
   }
-  
+
+  .header__user{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: $font-size-user;
+
+    .header__user_button{
+      text-decoration: none;
+      color: $main-text;
+      transition: $transition-all;
+      &:hover{
+        color: white;
+      }
+    }
+  }
 }

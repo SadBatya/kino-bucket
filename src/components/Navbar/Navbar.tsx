@@ -30,7 +30,11 @@ export const Navbar = () => {
           <FiSearch size={'2em'}/> 
         </button>
       </div>
-      <div className={style.user}>Пользователь</div>
+      <div className={style.header__user}>
+        <Link className={style.header__user_button} to={'/login'}>Войти</Link>
+        /
+        <Link className={style.header__user_button} to={'/authorization'}>Зарегистрироваться</Link>
+      </div>
     </div>
   );
 };

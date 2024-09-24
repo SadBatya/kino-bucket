@@ -9,6 +9,7 @@
   
   .form__title{
     text-align: center;
+    margin-bottom: 2rem;
   }
 
   .form__info{
@@ -17,13 +18,34 @@
     text-align: center;
 
     label{
-      margin-bottom: 8px;
+      margin-bottom: 0.5rem;
+      font-size: $font-size-card;
     }
 
     input{
-      margin-bottom: 20px;
+      margin-bottom: 2rem;
       padding: .5rem;
       font-size: $font-size-card;
+    }
+  }
+
+  .form__submit_btn {
+    padding: 0.8rem;
+    background-color: transparent;
+    border: 1px solid white;
+    font-size: $font-size-card;
+    color: $main-text;
+    border-radius: 8px;
+    transition: $transition-all;
+    cursor: pointer;
+    
+    &:hover{
+      background-color: $btn-bg-hover;
+    }
+    
+    &:disabled{
+      opacity: 0.5;
+      cursor: not-allowed;
     }
   }
 }

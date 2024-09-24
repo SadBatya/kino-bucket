@@ -1,0 +1,17 @@
+@import "../../styles/variables.scss";
+
+.submit__btn {
+  width: 100%;
+  padding: 0 1rem;
+  background-color: transparent;
+  border: 1px solid white;
+  font-size: $font-size-card;
+  color: $main-text;
+  border-radius: 8px;
+  transition: $transition-all;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $btn-bg-hover;
+  }
+}

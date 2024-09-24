@@ -1,0 +1,29 @@
+@import '../../styles/variables.scss';
+
+.form{
+  display: flex;
+  flex-direction: column;
+  max-width: 400px;
+  margin: 0 auto;
+  gap: 1.5rem;
+  
+  .form__title{
+    text-align: center;
+  }
+
+  .form__info{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    label{
+      margin-bottom: 8px;
+    }
+
+    input{
+      margin-bottom: 20px;
+      padding: .5rem;
+      font-size: $font-size-card;
+    }
+  }
+}

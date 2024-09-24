@@ -1,33 +1,80 @@
 @import "../../styles/variables.scss";
+
 .header {
-  padding: 1.5rem;
+  padding: 1rem 2rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   font-size: $font-size-header;
-}
-.navbar {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-}
-.navbar__inner {
-  display: flex;
-  gap: 2rem;
-  text-decoration: none;
-  list-style: none;
+  background-color: $bg-header;
+  position: fixed;
+  width: 100%;
 
-  .navbar__inner_el {
-    text-decoration: none;
-    cursor: pointer;
-    padding: 10px;
-    border: 1px solid white;
-    border-radius: 8px;
-    color: white;
-    transition: $transition-all;
-    text-transform: uppercase;
-    &:hover {
-      background-color: rgba(80, 84, 92, 0.691);
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+
+    .navbar__icon{
+      cursor: pointer;
+    }
+
+    .navbar__inner {
+      display: flex;
+      gap: 2rem;
+      text-decoration: none;
+      list-style: none;
+  
+      .navbar__inner_el {
+        text-decoration: none;
+        cursor: pointer;
+        padding: 10px;
+        border: 1px solid white;
+        border-radius: 8px;
+        color: white;
+        transition: $transition-all;
+        text-transform: uppercase;
+        &:hover {
+          background-color: $btn-bg-hover;
+        }
+      }
+    }
+  }
+  .navbar__search{
+    background-color: white;
+    height: 2rem;
+    display: flex;
+    input{
+      font-size: $font-size-header;
+      padding: 0.2rem 0 0.2rem 0.5rem;
+      border: none;
+      outline: none;
+    }
+    .navbar__search_btn{
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 30px;
+      height: 2rem;
+      background-color: white;
+      border: none;
+    }
+  }
+
+  .header__user{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    font-size: $font-size-user;
+
+    .header__user_button{
+      text-decoration: none;
+      color: $main-text;
+      transition: $transition-all;
+      &:hover{
+        color: white;
+      }
     }
   }
 }

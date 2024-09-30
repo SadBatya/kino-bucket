@@ -1,5 +1,7 @@
 import style from "./AuthorizationPage.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
+import { Link } from "react-router-dom";
+import { SubmitButton } from "../../components";
 
 type Inputs = {
   username: string;
@@ -13,10 +15,10 @@ export const AuthorizationPage = () => {
     register,
     handleSubmit,
     watch,
-    // reset,
+    reset,
     formState: { errors, isValid, isDirty },
   } = useForm<Inputs>({
-    mode: "onChange",
+    mode: "onBlur",
   });
   const password = watch("password");
   const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
@@ -41,7 +43,9 @@ export const AuthorizationPage = () => {
             },
           })}
         />
-        {errors.username && <p>{errors.username.message}</p>}
+        {errors.username && (
+          <p className={style.error__message}>{errors.username.message}</p>
+        )}
 
         <label htmlFor="email">Почта</label>
         <input
@@ -60,7 +64,9 @@ export const AuthorizationPage = () => {
             },
           })}
         />
-        {errors.email && <p>{errors.email.message}</p>}
+        {errors.email && (
+          <p className={style.error__message}>{errors.email.message}</p>
+        )}
 
         <label htmlFor="channel">Пароль</label>
         <input
@@ -79,7 +85,9 @@ export const AuthorizationPage = () => {
             },
           })}
         />
-        {errors.password && <p>{errors.password.message}</p>}
+        {errors.password && (
+          <p className={style.error__message}>{errors.password.message}</p>
+        )}
 
         <label htmlFor="repeatPassword">Повторите пароль</label>
         <input
@@ -91,18 +99,23 @@ export const AuthorizationPage = () => {
             validate: (value) => value === password || "Пароли не совпадают",
           })}
         />
-        {errors.confirmPassword && <p>{errors.confirmPassword.message}</p>}
+        {errors.confirmPassword && (
+          <p className={style.error__message}>
+            {errors.confirmPassword.message}
+          </p>
+        )}
 
         <button
           className={style.form__submit_btn}
           type="submit"
           disabled={!isDirty || !isValid}
-          // onClick={() => reset()}
+          onClick={() => reset()}
         >
-          Зарегистрироваться
+          <Link to="/">Зарегистрироваться</Link>
         </button>
+        <SubmitButton type={'submit'} text={'Зарегистрироваться'} path="/" status={!isDirty || !isValid}/>
+        <SubmitButton type={'submit'} text={'Ввести логин'} path="/login"/>
       </form>
-      <button className={style.form__submit_btn}>Ввести логин</button>
     </div>
   );
 };

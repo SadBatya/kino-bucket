@@ -32,24 +32,4 @@
       margin-bottom: 2rem;
     }
   }
-
-  .form__submit_btn {
-    padding: 0.8rem;
-    background-color: transparent;
-    border: 1px solid white;
-    font-size: $font-size-card;
-    color: $main-text;
-    border-radius: 8px;
-    transition: $transition-all;
-    cursor: pointer;
-   
-    &:hover {
-      background-color: $btn-bg-hover;
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-  }
 }

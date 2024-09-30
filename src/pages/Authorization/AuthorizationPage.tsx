@@ -1,6 +1,5 @@
 import style from "./AuthorizationPage.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Link } from "react-router-dom";
 import { SubmitButton } from "../../components";
 
 type Inputs = {
@@ -20,8 +19,21 @@ export const AuthorizationPage = () => {
   } = useForm<Inputs>({
     mode: "onBlur",
   });
+
   const password = watch("password");
-  const onSubmit: SubmitHandler<Inputs> = (data) => console.log(data);
+  
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    const userData = {
+      username: data.username,
+      email: data.email,
+      password: data.password,
+    };
+
+    localStorage.setItem("username", JSON.stringify(userData));
+
+    console.log(data);
+    console.log(localStorage.getItem("username"));
+  };
 
   return (
     <div className={style.form}>
@@ -32,7 +44,7 @@ export const AuthorizationPage = () => {
           type="text"
           placeholder="Введите логин..."
           {...register("username", {
-            required: "Поле обязательно",
+            required: "Поле не должно быть пустым",
             maxLength: {
               value: 20,
               message: "Должно быть не больше 20 символов",
@@ -53,7 +65,7 @@ export const AuthorizationPage = () => {
           id="email"
           placeholder="Введите свой email..."
           {...register("email", {
-            required: true,
+            required: "Поле не должно быть пустым",
             minLength: {
               value: 5,
               message: "Должно быть не меньше 5 символов",
@@ -74,7 +86,7 @@ export const AuthorizationPage = () => {
           id="password"
           placeholder="Введите пароль..."
           {...register("password", {
-            required: true,
+            required: "Поле не должно быть пустым",
             minLength: {
               value: 5,
               message: "Должно быть больше 5 символов",
@@ -104,17 +116,12 @@ export const AuthorizationPage = () => {
             {errors.confirmPassword.message}
           </p>
         )}
-
-        <button
-          className={style.form__submit_btn}
-          type="submit"
-          disabled={!isDirty || !isValid}
-          onClick={() => reset()}
-        >
-          <Link to="/">Зарегистрироваться</Link>
-        </button>
-        <SubmitButton type={'submit'} text={'Зарегистрироваться'} path="/" status={!isDirty || !isValid}/>
-        <SubmitButton type={'submit'} text={'Ввести логин'} path="/login"/>
+        <SubmitButton
+          type={"submit"}
+          text={"Зарегистрироваться"}
+          status={!isDirty || !isValid}
+        />
+        <SubmitButton text={"Ввести логин"} path="/login" />
       </form>
     </div>
   );

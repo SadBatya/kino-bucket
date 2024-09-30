@@ -4,13 +4,40 @@ interface ISubmitButton {
   type?: "submit" | "reset" | "button" | undefined;
   text: string;
   path?: string | "";
-  status?: boolean
+  status?: boolean;
+  onClick?: () => void;
 }
 
-export const SubmitButton = ({ type, text, path = "", status }: ISubmitButton) => {
+export const SubmitButton = ({
+  type,
+  text,
+  path = "",
+  status,
+  onClick,
+}: ISubmitButton) => {
   return (
-    <button type={type} disabled={status} className={style.submit__btn}>
-      <Link className={style.submit__btn_link} to={path}>{text}</Link>
-    </button>
+    <>
+      {status ? (
+        <Link className={style.submit__btn_link} to={path}>
+          <button
+            className={style.submit__btn}
+            type={type}
+            onClick={() => onClick}
+            disabled={status}
+          >
+            {text}
+          </button>
+        </Link>
+      ) : (
+        <button
+          className={style.submit__btn}
+          type={type}
+          onClick={() => onClick}
+          disabled={status}
+        >
+          {text}
+        </button>
+      )}
+    </>
   );
 };

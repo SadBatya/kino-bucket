@@ -8,4 +8,5 @@ export interface IFilmDescriptionProps {
   description?: string;
   country?: string;
   genre?: string;
+  kinopoisk_id?: number;
 }

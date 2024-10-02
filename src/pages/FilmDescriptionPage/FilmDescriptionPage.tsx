@@ -2,22 +2,20 @@ import { useLocation } from "react-router-dom";
 import { FilmDescription } from "../../components/FilmCardDescription/FilmDescription";
 import { useGetFilmDescriptionQuery } from "../../store/kinopoiskApi";
 import { Loader } from "../../components";
+
 export const FilmDescriptionPage = () => {
   let location = useLocation();
 
   let url = `${location.pathname}`;
 
-  console.log(url);
   const { data, isLoading } = useGetFilmDescriptionQuery(url);
 
-  console.log(data);
-
   if (isLoading) return <Loader />;
-
 
   return (
     <div>
       <FilmDescription
+        kinopoisk_id={data.kinopoiskId}
         name={data.nameRu}
         year={data.year}
         ratingKinopoisk={data.ratingKinopoisk}

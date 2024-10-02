@@ -62,5 +62,23 @@
       max-width: 500px;
       font-size: $font-size-description;
     }
+
+    .card__btn {
+      width: 100%;
+      background-color: transparent;
+      border: 1px solid white;
+      font-size: $font-size-card;
+      border-radius: 8px;
+      transition: $transition-all;
+      margin-bottom: 2rem;
+      cursor: pointer;
+      height: 50px;
+      color: $main-text;
+
+
+      &:hover {
+        background-color: $btn-bg-hover;
+      }
+    }
   }
 }

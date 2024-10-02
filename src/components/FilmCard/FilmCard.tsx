@@ -1,6 +1,7 @@
 import { IFilmCard } from "./features/filmCardTypes";
 import style from "./FilmCard.module.scss";
 import { Link } from "react-router-dom";
+
 export const FilmCard = ({
   name,
   year,

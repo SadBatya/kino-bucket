@@ -64,7 +64,6 @@ export const LoginPage = () => {
           <p className={style.error__message}>Пользователь на найден :c</p>
         )}
         <SubmitButton text={"Войти"} status={!isDirty || !isValid} />
-        <SubmitButton text={"Зарегистрироваться"} />
       </form>
     </div>
   );

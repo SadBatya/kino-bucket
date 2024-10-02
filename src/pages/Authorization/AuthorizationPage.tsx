@@ -1,6 +1,9 @@
 import style from "./AuthorizationPage.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { SubmitButton } from "../../components";
+import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "../../store/hooks";
+import { isLogin } from "../../store/userSlice";
 
 type Inputs = {
   username: string;
@@ -10,6 +13,9 @@ type Inputs = {
 };
 
 export const AuthorizationPage = () => {
+  const dispatch = useAppDispatch()
+
+
   const {
     register,
     handleSubmit,
@@ -21,6 +27,7 @@ export const AuthorizationPage = () => {
   });
 
   const password = watch("password");
+  const navigate = useNavigate()
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const userData = {
@@ -29,10 +36,9 @@ export const AuthorizationPage = () => {
       password: data.password,
     };
 
-    localStorage.setItem("username", JSON.stringify(userData));
-
-    console.log(data);
-    console.log(localStorage.getItem("username"));
+    localStorage.setItem("user", JSON.stringify(userData));
+    dispatch(isLogin(true))
+    navigate('/')
   };
 
   return (
@@ -121,7 +127,7 @@ export const AuthorizationPage = () => {
           text={"Зарегистрироваться"}
           status={!isDirty || !isValid}
         />
-        <SubmitButton text={"Ввести логин"} path="/login" />
+        <button className={style.form__btn} onClick={() => navigate('/login')}>Ввести логин</button>
       </form>
     </div>
   );

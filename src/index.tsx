@@ -8,10 +8,12 @@ import {
   FavouritesPage,
   FilmListPage,
   LoginPage,
-  FilmDescriptionPage
+  FilmDescriptionPage,
 } from "./pages";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
+import { Suspense } from "react";
+import { Loader } from "./components";
 
 const router = createBrowserRouter([
   {
@@ -36,9 +38,9 @@ const router = createBrowserRouter([
         element: <AuthorizationPage />,
       },
       {
-        path: '/film-description',
-        element: <FilmDescriptionPage />
-      }
+        path: "/films/:id",
+        element: <FilmDescriptionPage />,
+      },
     ],
   },
 ]);
@@ -50,7 +52,9 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <Suspense fallback={<Loader />}>
+        <RouterProvider router={router} />
+      </Suspense>
     </Provider>
   </React.StrictMode>
 );

@@ -1,5 +1,5 @@
 export interface IFilmDescriptionProps {
-  id?: number;
+  id?: string;
   name?: string;
   poster?: string;
   ratingKinopoisk?: number;

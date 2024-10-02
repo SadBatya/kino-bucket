@@ -21,7 +21,7 @@ export const AuthorizationPage = () => {
   });
 
   const password = watch("password");
-  
+
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     const userData = {
       username: data.username,

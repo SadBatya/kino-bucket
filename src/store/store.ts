@@ -1,10 +1,14 @@
 import { configureStore } from "@reduxjs/toolkit";
 import favouriteFilmReducer from "./favouriteFilmsSlice";
+import { kinopoiskApi } from "./kinopoiskApi";
 
 export const store = configureStore({
   reducer: {
     favouriteFilms: favouriteFilmReducer,
+    [kinopoiskApi.reducerPath]: kinopoiskApi.reducer,
   },
+  middleware: (getDefaultMiddleWare) =>
+    getDefaultMiddleWare().concat(kinopoiskApi.middleware),
 });
 
 export type RootState = ReturnType<typeof store.getState>;

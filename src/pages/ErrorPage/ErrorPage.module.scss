@@ -1,0 +1,41 @@
+@import "../../styles/variables.scss";
+
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2rem;
+  height: 80vh;
+  align-items: center;
+  text-align: center;
+
+  .error__text {
+    margin-bottom: 1rem;
+  }
+
+  .error__gif {
+    width: 15%;
+  }
+  .error__btn {
+    text-decoration: none;
+    background-color: transparent;
+    border: 1px solid white;
+    font-size: $font-size-card;
+    border-radius: 8px;
+    transition: $transition-all;
+    margin-bottom: 2rem;
+    cursor: pointer;
+    height: 50px;
+    padding: 0 2rem;
+    color: $main-text;
+    color: $main-text;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      background-color: $btn-bg-hover;
+    }
+  }
+}

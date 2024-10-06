@@ -3,7 +3,7 @@ import style from "./FilmDescription.module.scss";
 import { useAppDispatch } from "../../store/hooks";
 import { addFilm } from "../../store/favouriteFilmsSlice";
 import { useState } from "react";
-
+import { useAppSelector } from "../../store/hooks";
 export const FilmDescription = ({
   name,
   poster,
@@ -16,26 +16,29 @@ export const FilmDescription = ({
   kinopoisk_id,
 }: IFilmDescriptionProps) => {
   const dispatch = useAppDispatch();
-
   const [btnText, setBtnText] = useState("Добавить в избранное");
+  const userStatus = useAppSelector((state) => state.user.isUserLogin);
 
   const putInFavourite = () => {
-    dispatch(
-      addFilm({
-        name,
-        poster,
-        ratingKinopoisk,
-        ratingImdb,
-        year,
-        description,
-        country,
-        genre,
-        kinopoisk_id
-      })
-    );
-    console.log("click");
+    if (userStatus) {
+      dispatch(
+        addFilm({
+          name,
+          poster,
+          ratingKinopoisk,
+          ratingImdb,
+          year,
+          description,
+          country,
+          genre,
+          kinopoisk_id,
+        })
+      );
 
-    setBtnText("Добавлено:D");
+      setBtnText("Добавлено:D");
+    }else{
+      alert('Требуется регистрация пользователя')
+    }
   };
 
   return (

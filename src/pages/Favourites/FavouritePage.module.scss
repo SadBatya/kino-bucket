@@ -1,6 +1,22 @@
-.film__list{
+@import "../../styles/variables.scss";
+
+.film__list {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   gap: 1rem;
+}
+
+.film__empty_title {
+  font-size: $font-size-large;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  img{
+    width: 40%;
+  }
 }

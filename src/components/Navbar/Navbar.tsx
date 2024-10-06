@@ -5,11 +5,13 @@ import KBIcon from "../../assets/icons/kb.svg";
 import { FiSearch } from "react-icons/fi";
 import { useEffect, useState } from "react";
 import { useAppSelector } from "../../store/hooks";
+import { isLogin } from "../../store/userSlice";
+import { useAppDispatch } from "../../store/hooks";
 
 export const Navbar = () => {
   const [user, setUser] = useState<{ username: string } | null>(null);
-  const userStatus = useAppSelector(state => state.user.isUserLogin)
-  
+  const userStatus = useAppSelector((state) => state.user.isUserLogin);
+  const dispatch = useAppDispatch()
   useEffect(() => {
     const localData = localStorage.getItem("user");
     if (localData) {
@@ -18,8 +20,8 @@ export const Navbar = () => {
   }, [userStatus]);
 
   const deleteUser = () => {
-    localStorage.removeItem("user");
     setUser(null);
+    dispatch(isLogin(false))
   };
 
   return (
@@ -48,7 +50,7 @@ export const Navbar = () => {
         </button>
       </div>
       <div className={style.header__user}>
-        {user ? (
+        {userStatus ? (
           <>
             {user?.username}
             <button

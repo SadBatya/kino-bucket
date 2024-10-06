@@ -1,6 +1,7 @@
 import { FilmCard } from "../../components";
 import style from "./FavouritePage.module.scss";
 import { useAppSelector } from "../../store/hooks";
+import emptyIcon from "../../assets/gifs/empty.webp";
 
 export const FavouritesPage = () => {
   const films = useAppSelector((state) => state.favouriteFilms.films);
@@ -19,7 +20,10 @@ export const FavouritesPage = () => {
           />
         ))
       ) : (
-        <div>Список избранных пуст</div>
+        <div className={style.film__empty_title}>
+          <h1>Список избранных пуст :c</h1>
+          <img src={emptyIcon} alt="" />
+        </div>
       )}
     </div>
   );

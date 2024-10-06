@@ -10,6 +10,7 @@ import {
   LoginPage,
   FilmDescriptionPage,
   ErrorPage,
+  ResultSearchFilm,
 } from "./pages";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
@@ -41,6 +42,10 @@ const router = createBrowserRouter([
       {
         path: "/films/:id",
         element: <FilmDescriptionPage />,
+      },
+      {
+        path: "/search-result",
+        element: <ResultSearchFilm />,
       },
     ],
   },

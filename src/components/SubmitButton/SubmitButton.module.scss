@@ -1,0 +1,36 @@
+@import "../../styles/variables.scss";
+
+.submit__btn {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid white;
+  font-size: $font-size-card;
+  border-radius: 8px;
+  transition: $transition-all;
+  margin-bottom: 2rem;
+  cursor: pointer;
+  height: 50px;
+  color: $main-text;
+  
+  .submit__btn_link {
+    color: $main-text;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &:hover {
+    background-color: $btn-bg-hover;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    .submit__btn_link {
+      cursor: not-allowed;
+    }
+  }
+}

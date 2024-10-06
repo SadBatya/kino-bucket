@@ -3,7 +3,17 @@ import ReactDOM from "react-dom/client";
 import "./styles/index.scss";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
-import { AuthorizationPage, FavouritesPage, FilmListPage, LoginPage } from "./pages";
+import {
+  AuthorizationPage,
+  FavouritesPage,
+  FilmListPage,
+  LoginPage,
+  FilmDescriptionPage,
+} from "./pages";
+import { Provider } from "react-redux";
+import { store } from "./store/store";
+import { Suspense } from "react";
+import { Loader } from "./components";
 
 const router = createBrowserRouter([
   {
@@ -20,12 +30,16 @@ const router = createBrowserRouter([
         element: <FavouritesPage />,
       },
       {
-        path: '/login',
-        element: <LoginPage />
+        path: "/login",
+        element: <LoginPage />,
       },
       {
-        path: '/authorization',
-        element: <AuthorizationPage />
+        path: "/authorization",
+        element: <AuthorizationPage />,
+      },
+      {
+        path: "/films/:id",
+        element: <FilmDescriptionPage />,
       },
     ],
   },
@@ -34,8 +48,13 @@ const router = createBrowserRouter([
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
+
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <Suspense fallback={<Loader />}>
+        <RouterProvider router={router} />
+      </Suspense>
+    </Provider>
   </React.StrictMode>
 );

@@ -26,8 +26,8 @@ export const kinopoiskApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    getFilmList: builder.query<ApiResponse, void>({
-      query: () => "/films",
+    getFilmList: builder.query<ApiResponse, void | number>({
+      query: (page: number = 1) => `/films?page=${page}`,
     }),
     getFilmDescription: builder.query({
       query: (path = "") => `${path}`,
@@ -38,4 +38,8 @@ export const kinopoiskApi = createApi({
   }),
 });
 
-export const { useGetFilmListQuery, useSearchFilmByNameQuery, useGetFilmDescriptionQuery } = kinopoiskApi;
+export const {
+  useGetFilmListQuery,
+  useSearchFilmByNameQuery,
+  useGetFilmDescriptionQuery,
+} = kinopoiskApi;

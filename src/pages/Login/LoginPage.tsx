@@ -2,6 +2,9 @@ import style from "./LoginPage.module.scss";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { SubmitButton } from "../../components";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { isLogin } from "../../store/userSlice";
+import { useNavigate } from "react-router-dom";
 
 type Inputs = {
   username: string;
@@ -9,6 +12,8 @@ type Inputs = {
 };
 
 export const LoginPage = () => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate()
   const {
     register,
     handleSubmit,
@@ -16,9 +21,22 @@ export const LoginPage = () => {
   } = useForm<Inputs>({
     mode: "onBlur",
   });
-  const [errorMessage, setErrorMessage] = useState(true);
 
-  const onSubmit: SubmitHandler<Inputs> = (data) => {};
+  const [errorMessage, setErrorMessage] = useState(false);
+
+  const onSubmit: SubmitHandler<Inputs> = (data) => {
+    let storageData = localStorage.getItem("user");
+
+    if (storageData) {
+      let storageDataToString = JSON.parse(storageData);
+      if (storageDataToString.username !== data.username) {
+        setErrorMessage(true);
+      } else {
+        dispatch(isLogin(true));
+        navigate('/')
+      }
+    }
+  };
 
   return (
     <div className={style.form}>

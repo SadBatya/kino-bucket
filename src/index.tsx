@@ -9,6 +9,7 @@ import {
   FilmListPage,
   LoginPage,
   FilmDescriptionPage,
+  ErrorPage,
 } from "./pages";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
@@ -19,7 +20,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
-    errorElement: <div>Error Page</div>,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",

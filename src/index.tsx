@@ -16,6 +16,7 @@ import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { Suspense } from "react";
 import { Loader } from "./components";
+import { ErrorBoundary } from "react-error-boundary";
 
 const router = createBrowserRouter([
   {
@@ -59,7 +60,9 @@ root.render(
   <React.StrictMode>
     <Provider store={store}>
       <Suspense fallback={<Loader />}>
-        <RouterProvider router={router} />
+        <ErrorBoundary fallback={<ErrorPage />}>
+          <RouterProvider router={router} />
+        </ErrorBoundary>
       </Suspense>
     </Provider>
   </React.StrictMode>

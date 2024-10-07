@@ -1,6 +1,33 @@
-.film__list{
+@import "../../styles/variables.scss";
+
+.film__list {
   display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
-  gap: 1rem;
+  flex-direction: column;
+
+  .film__list_inner {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .pagination {
+    display: flex;
+    gap: 2rem;
+    margin: 0 auto;
+    align-items: center;
+    font-size: $font-size-header;
+    .pagination__btn_left,
+    .pagination__btn_right {
+      width: 40px;
+      height: 40px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+    .pagination__btn_left {
+      transform: rotate(180deg);
+    }
+  }
 }

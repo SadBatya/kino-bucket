@@ -1,5 +1,5 @@
 import { useLocation } from "react-router-dom";
-import { FilmDescription } from "../../components/FilmCardDescription/FilmDescription";
+import { FilmDescription } from "../../components";
 import { useGetFilmDescriptionQuery } from "../../store/kinopoiskApi";
 import { Loader } from "../../components";
 

@@ -8,6 +8,7 @@ import { useAppSelector } from "../../store/hooks";
 import { isLogin } from "../../store/userSlice";
 import { useAppDispatch } from "../../store/hooks";
 import { putResultNameSearch } from "../../store/filmNameSearchResultSlice";
+import { useDebounce } from "../../hooks";
 
 export const Navbar = () => {
   const [user, setUser] = useState<{ username: string } | null>(null);
@@ -16,6 +17,7 @@ export const Navbar = () => {
   const [filmName, setFilmName] = useState("");
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const debounseSearchFilmName = useDebounce(filmName, 500)
 
   useEffect(() => {
     const localData = localStorage.getItem("user");
@@ -30,10 +32,13 @@ export const Navbar = () => {
   };
 
   const searchFilm = () => {
-    dispatch(putResultNameSearch(filmName));
+    dispatch(putResultNameSearch(debounseSearchFilmName));
     navigate("/search-result");
     setFilmName('')
   };
+
+  console.log('filmName', filmName)
+  console.log('debounceFilmName', debounseSearchFilmName)
   
   return (
     <div className={style.header}>

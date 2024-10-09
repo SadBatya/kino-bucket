@@ -24,7 +24,13 @@ const favouriteFilmsSlice = createSlice({
   initialState,
   reducers: {
     addFilm: (state, action: PayloadAction<IFilm>) => {
-      state.films.push(action.payload);
+      const filmExists = state.films.some(
+        (film) => film.kinopoisk_id === action.payload.kinopoisk_id
+      );
+
+      if (!filmExists) {
+        state.films.push(action.payload);
+      }
     },
   },
 });

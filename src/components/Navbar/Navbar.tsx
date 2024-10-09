@@ -36,9 +36,6 @@ export const Navbar = () => {
     navigate("/search-result");
     setFilmName('')
   };
-
-  console.log('filmName', filmName)
-  console.log('debounceFilmName', debounseSearchFilmName)
   
   return (
     <div className={style.header}>
